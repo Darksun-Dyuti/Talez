@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
 import { MotionSection } from "@/components/site/motion-section";
 import { PostCard } from "@/components/posts/post-card";
 import { Carousel } from "@/components/site/carousel";

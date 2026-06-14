@@ -1,6 +1,6 @@
 const CACHE_NAME = "talez-v1";
 const OFFLINE_URL = "/offline";
-const CORE_ASSETS = ["/", OFFLINE_URL, "/brand/talez-logo-256.png", "/icon-192.png", "/og-image.png"];
+const CORE_ASSETS = ["/", OFFLINE_URL, "/brand/logo.png", "/icon-192.png", "/og-image.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

@@ -25,7 +25,7 @@ export function newPostEmailTemplate(post: TalezPost, unsubscribeUrl?: string) {
       <div style="max-width:640px;margin:0 auto;background:#fffaf1;border:1px solid #eadfca;border-radius:18px;overflow:hidden">
         <img src="${image}" alt="${post.title}" style="width:100%;height:auto;display:block" />
         <div style="padding:28px">
-          <img src="${absoluteUrl("/brand/talez-logo-256.png")}" alt="Talez" width="56" height="56" style="border-radius:14px" />
+          <img src="${absoluteUrl("/brand/logo.png")}" alt="Talez" width="56" height="56" style="border-radius:14px" />
           <p style="text-transform:uppercase;letter-spacing:0.12em;color:#a26b26;font-size:12px">${post.type === "STORY" ? "New Story" : "New Blog"}</p>
           <h1 style="font-family:Georgia,serif;font-size:34px;line-height:1.1;margin:0 0 12px">${post.title}</h1>
           <p style="font-size:16px;line-height:1.7;color:#645b4c">${post.excerpt}</p>

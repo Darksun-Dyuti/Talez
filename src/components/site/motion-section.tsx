@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 
 export function MotionSection({
   children,
-  className
+  className,
+  delay = 0
 }: {
   children: React.ReactNode;
   className?: string;
+  delay?: number;
 }) {
   return (
     <motion.section
@@ -15,7 +17,7 @@ export function MotionSection({
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
+      transition={{ duration: 0.45, ease: "easeOut", delay }}
     >
       {children}
     </motion.section>

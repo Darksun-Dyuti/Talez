@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { BarChart3, FilePenLine, LayoutDashboard, Mail, MessageSquare, Users, WalletCards } from "lucide-react";
-import { getAdminAccess } from "@/lib/access";
+import { requireAdmin } from "@/lib/auth-utils";
 
 const adminNav = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -15,28 +14,24 @@ const adminNav = [
 ];
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  const access = await getAdminAccess();
-
-  if (!access.allowed) {
-    redirect("/admin-login");
-  }
+  const session = await requireAdmin();
 
   return (
-    <section className="border-t border-line bg-surface">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[250px_1fr] lg:px-8">
-        <aside className="h-fit rounded-lg border border-line bg-paper p-4 lg:sticky lg:top-24">
-          <div className="flex items-center gap-3 border-b border-line pb-4">
-            <Image src="/brand/talez-logo-256.png" alt="Talez" width={42} height={42} className="rounded-xl border border-line bg-ink" />
+    <section className="border-t border-line bg-surface min-h-[calc(100vh-80px)]">
+      <div className="mx-auto grid max-w-[1400px] gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[250px_1fr] lg:px-8">
+        <aside className="h-fit rounded-xl border border-line bg-paper p-4 shadow-sm lg:sticky lg:top-24">
+          <div className="flex items-center gap-3 border-b border-line pb-4 mb-4">
+            <Image src="/brand/logo.png" alt="Talez" width={42} height={42} className="rounded-lg bg-ink" />
             <div>
-              <p className="font-serif text-xl font-semibold text-ink">Admin</p>
-              {access.demo ? <p className="text-xs text-muted">Demo mode</p> : null}
+              <p className="font-serif text-lg font-semibold text-ink">Admin Studio</p>
+              <p className="text-xs text-muted font-mono">{session.user.email}</p>
             </div>
           </div>
-          <nav className="mt-4 grid gap-1">
+          <nav className="grid gap-1">
             {adminNav.map((item) => {
               const Icon = item.icon;
               return (
-                <Link key={item.href} href={item.href} className="inline-flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-muted transition hover:bg-surface hover:text-ink">
+                <Link key={item.href} href={item.href} className="inline-flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-muted transition hover:bg-surface hover:text-ink">
                   <Icon className="h-4 w-4" />
                   {item.label}
                 </Link>
@@ -44,7 +39,11 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             })}
           </nav>
         </aside>
-        <div>{children}</div>
+        <div className="min-w-0">
+          <div className="rounded-xl border border-line bg-paper shadow-sm min-h-[600px]">
+            {children}
+          </div>
+        </div>
       </div>
     </section>
   );

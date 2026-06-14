@@ -91,7 +91,7 @@ export function postJsonLd(post: TalezPost) {
       name: "Talez",
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/brand/talez-logo-512.png")
+        url: absoluteUrl("/brand/logo.png")
       }
     },
     mainEntityOfPage: absoluteUrl(`/posts/${post.slug}`)

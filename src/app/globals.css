@@ -5,15 +5,19 @@
 :root {
   --paper: 255 255 255;
   --surface: 248 250 252; /* slate-50 */
-  --ink: 30 27 75; /* indigo-950 */
+  --ink: 15 23 42; /* slate-900 */
   --muted: 100 116 139; /* slate-500 */
   --line: 226 232 240; /* slate-200 */
   --gold: 167 139 250; /* violet-400 */
   --ember: 244 114 182; /* pink-400 */
   --sage: 52 211 153; /* emerald-400 */
   --dusk: 56 189 248; /* sky-400 */
+  --brand: 16 185 129; /* emerald-500 */
+  --brand-light: 52 211 153; /* emerald-400 */
+  --brand-dark: 4 120 87; /* emerald-700 */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-serif: "Georgia", "Times New Roman", serif;
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 .dark {
@@ -26,6 +30,9 @@
   --ember: 244 114 182;
   --sage: 52 211 153;
   --dusk: 56 189 248;
+  --brand: 4 120 87; /* emerald-700 */
+  --brand-light: 16 185 129; /* emerald-500 */
+  --brand-dark: 2 44 34; /* emerald-950 */
 }
 
 * {

@@ -37,7 +37,7 @@ export function SignInForm() {
   return (
     <div className="mx-auto w-full max-w-md rounded-lg border border-line bg-surface p-6 shadow-soft">
       <div className="mb-6 flex items-center gap-3">
-        <Image src="/brand/talez-logo-256.png" alt="Talez" width={46} height={46} className="rounded-xl border border-line bg-ink" />
+        <Image src="/brand/logo.png" alt="Talez" width={46} height={46} className="rounded-xl border border-line bg-ink" />
         <div>
           <h1 className="font-serif text-3xl font-semibold text-ink">Welcome back</h1>
           <p className="text-sm text-muted">Continue reading with Talez.</p>
@@ -113,7 +113,7 @@ export function SignUpForm() {
   return (
     <div className="mx-auto w-full max-w-md rounded-lg border border-line bg-surface p-6 shadow-soft">
       <div className="mb-6 flex items-center gap-3">
-        <Image src="/brand/talez-logo-256.png" alt="Talez" width={46} height={46} className="rounded-xl border border-line bg-ink" />
+        <Image src="/brand/logo.png" alt="Talez" width={46} height={46} className="rounded-xl border border-line bg-ink" />
         <div>
           <h1 className="font-serif text-3xl font-semibold text-ink">Join Talez</h1>
           <p className="text-sm text-muted">Bookmarks, history, comments, and memberships.</p>

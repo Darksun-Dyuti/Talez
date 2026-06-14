@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Mail, Rss } from "lucide-react";
+import { ArrowRight, Mail, Rss, Github, Twitter } from "lucide-react";
 
 const columns = [
   {
@@ -16,65 +15,105 @@ const columns = [
     title: "Community",
     links: [
       { label: "Subscribe", href: "/subscribe" },
-      { label: "Support", href: "/donate" },
+      { label: "Support the Creator", href: "/donate" },
       { label: "Supporter Wall", href: "/supporters" },
       { label: "Reader Dashboard", href: "/dashboard" }
     ]
   },
   {
-    title: "Creator",
+    title: "Legal",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Admin", href: "/admin" },
-      { label: "Newsletter", href: "/admin/newsletters" }
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" }
     ]
   }
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-surface">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.4fr_2fr] lg:px-8">
-        <div>
-          <div className="flex items-center gap-3">
-            <Image src="/brand/talez-logo-256.png" alt="Talez logo" width={48} height={48} className="rounded-xl border border-line bg-ink" />
-            <div>
-              <p className="font-serif text-2xl font-semibold text-ink">Talez</p>
-              <p className="text-sm text-muted">Tales, Thoughts, and Beyond</p>
+    <footer className="relative mt-32 overflow-hidden border-t border-line/40 bg-surface/30">
+      {/* Decorative large text background */}
+      <div className="pointer-events-none absolute -bottom-10 left-0 right-0 flex justify-center opacity-[0.03] dark:opacity-[0.02]">
+        <h2 className="text-[25vw] font-bold tracking-tighter text-ink/20">TaleZ.</h2>
+      </div>
+
+      <div className="relative mx-auto max-w-[1400px] px-6 py-20 lg:px-12">
+        <div className="grid gap-16 lg:grid-cols-2 lg:gap-8">
+          
+          {/* Left section: Newsletter & Intro */}
+          <div className="flex flex-col justify-between">
+            <div className="max-w-md">
+              <h3 className="font-serif text-4xl leading-tight text-ink">
+                Let's stay connected.
+              </h3>
+              <p className="mt-4 text-base text-muted">
+                Join the inner circle. Get stories, updates, and personal thoughts delivered directly to your inbox. No spam, just good reading.
+              </p>
+              
+              <form className="mt-8 relative max-w-sm">
+                <input 
+                  type="email" 
+                  placeholder="name@example.com" 
+                  className="w-full rounded-full border border-line/60 bg-paper py-3 pl-6 pr-12 text-sm transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                  required
+                />
+                <button 
+                  type="submit" 
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-brand p-1.5 text-paper transition-transform hover:scale-110"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </form>
+            </div>
+            
+            <div className="mt-16 flex gap-4">
+              <Link href="https://twitter.com" className="group rounded-full border border-line/40 bg-paper p-3 text-muted transition hover:border-brand hover:text-brand hover:shadow-glow">
+                <Twitter className="h-5 w-5" />
+              </Link>
+              <Link href="https://github.com" className="group rounded-full border border-line/40 bg-paper p-3 text-muted transition hover:border-brand hover:text-brand hover:shadow-glow">
+                <Github className="h-5 w-5" />
+              </Link>
+              <Link href="/rss.xml" className="group rounded-full border border-line/40 bg-paper p-3 text-muted transition hover:border-brand hover:text-brand hover:shadow-glow">
+                <Rss className="h-5 w-5" />
+              </Link>
             </div>
           </div>
-          <p className="mt-5 max-w-md text-sm leading-7 text-muted">
-            A calm publishing home for stories, essays, newsletters, memberships, and reader community.
-          </p>
-          <div className="mt-6 flex gap-3">
-            <Link href="/subscribe" className="grid h-10 w-10 place-items-center rounded-full border border-line bg-paper text-muted transition hover:text-ink" aria-label="Subscribe">
-              <Mail className="h-4 w-4" />
-            </Link>
-            <Link href="/rss.xml" className="grid h-10 w-10 place-items-center rounded-full border border-line bg-paper text-muted transition hover:text-ink" aria-label="RSS">
-              <Rss className="h-4 w-4" />
-            </Link>
+
+          {/* Right section: Links */}
+          <div className="grid gap-12 sm:grid-cols-3">
+            {columns.map((column) => (
+              <div key={column.title} className="flex flex-col gap-6">
+                <h4 className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-ink">
+                  {column.title}
+                </h4>
+                <ul className="flex flex-col gap-4">
+                  {column.links.map((link) => (
+                    <li key={link.href}>
+                      <Link 
+                        href={link.href} 
+                        className="group relative inline-block text-sm text-muted transition-colors hover:text-ink"
+                      >
+                        {link.label}
+                        <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-brand transition-all duration-300 group-hover:w-full" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
+
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-3">
-          {columns.map((column) => (
-            <div key={column.title}>
-              <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-ink">{column.title}</h2>
-              <ul className="mt-4 space-y-3">
-                {column.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-muted transition hover:text-ink">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        {/* Bottom Banner */}
+        <div className="mt-32 flex flex-col items-center justify-between gap-4 border-t border-line/40 pt-8 sm:flex-row">
+          <p className="font-mono text-xs tracking-wider text-muted">
+            © {new Date().getFullYear()} TALEZ. ALL RIGHTS RESERVED.
+          </p>
+          <p className="font-mono text-xs tracking-wider text-muted">
+            A PERSONAL PUBLISHING PLATFORM.
+          </p>
         </div>
-      </div>
-      <div className="border-t border-line py-5 text-center text-xs text-muted">
-        © {new Date().getFullYear()} Talez. Built for generous reading.
       </div>
     </footer>
   );
